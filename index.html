@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Juguetes</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- StyleSheet local -->
+  <link href="./style.css" rel="stylesheet" />
+  
+  <!--Marcador Handler Src-->
+  <script src="./Boton.js" ></script>
+  <script src="./MarkerHandler.js" ></script>
+
+</head>
+
+<body style="margin : 0px; overflow: hidden;">
+
+  <a-scene 
+    embedded vr-mode-ui="enabled: false"     
+    arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;debugUIEnabled: false;"
+    gesture-detector botones>
+
+    <!-- Cámara -->
+    <a-entity camera></a-entity>
+
+    
+    <a-assets>
+      <a-asset-item id="modelo_oso" src="./plush_toy/scene.gltf" ></a-asset-item>
+    </a-assets>
+    <a-marker id="marcador" type="pattern" url="./assets/pattern-oso.patt" cursor="rayOrigin:mouse" marker-handler>
+      <a-entity id="oso" position="-1 0 -0.1" scale="0.35 0.35 0.35" rotation="-90 0 0" gltf-model="#modelo_oso" gesture-handler ></a-entity>
+      <a-plane position="0 0 0" width="1.5" height="1.5" rotation="-90 0 0" >
+        <a-plane position="0 0.89 0.02" width="1.49" height="0.3" rotation="0 0 0" color="coral" >
+          <a-entity position="0 0 0.1" rotation="0 0 0" text="font:monoid; color:black; widht:1.8; height:1; align:center; value:Oso de peluche" ></a-entity>
+        </a-plane>
+        <a-entity position="0 0 0.1" rotation="0 0 0" text="font:monoid; color:black; widht:2; align:center; value:Un osos de peluche con relleno de algodon\n pelo naranja\n piedras de fantasia \n ojos y nariz nego"></a-entity>
+      </a-plane>
+    </a-marker>
+    
+  </a-scene>
+
+  <!-- Botón div principal -->
+  <div id="buttom-div" ></div>
+ 
+</body>
+
+</html>
